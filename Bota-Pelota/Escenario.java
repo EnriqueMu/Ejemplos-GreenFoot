@@ -11,7 +11,6 @@ import java.awt.event.MouseEvent;
  */
 public class Escenario extends World
 {
-    private LinkedList<Pelota> pelotas;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -20,8 +19,9 @@ public class Escenario extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, true); 
-        pelotas = new LinkedList<Pelota>();
-    }
+        prepare();
+    }
+
     @Override
     public void act()
     {
@@ -30,33 +30,34 @@ public class Escenario extends World
             System.out.println("Click en el mundo");
             MouseInfo raton = Greenfoot.getMouseInfo();
             System.out.println("Coordenadas x = " + raton.getX() + " , " + raton.getY());
-            int x = mouseInfo.getX();
-            int y = mouseInfo.getY();
-            if(Greenfoot.mouseClicked(getWorld()))
-            {
-                getWorld().addObject(new Pelota(), x,y);
-            }
-            //Pelota nuevapelota = new Pelota(posx,posy);
-            //pelotas.add(nuevaPelota);
+            int x = raton.getX();
+            int y = raton.getY();
+            addObject(new Pelota(), x,y);
         }
+        //Pelota nuevapelota = new Pelota(posx,posy);
+        //pelotas.add(nuevaPelota);
     }
-   /* public void NuevaPelota()
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
     {
-        if(Greenfoot.mouseClicked(this))
-        {
-            MouseInfo clic = Greenfoot.getMouseInfo();
-            int mx=mouse.getX(), my=mouse.getY();
-            Pelota nuevapelota = new Pelota(mx,my);
-            
-        }
+        Pelota pelota = new Pelota();
+        addObject(pelota,163,137);
+        Pelota pelota2 = new Pelota();
+        addObject(pelota2,374,116);
+        Pelota pelota3 = new Pelota();
+        addObject(pelota3,323,174);
+        Pelota pelota4 = new Pelota();
+        addObject(pelota4,251,76);
+        Pelota pelota5 = new Pelota();
+        addObject(pelota5,215,186);
+        Jugador jugador = new Jugador();
+        addObject(jugador,293,359);
+        Disapro disapro = new Disapro();
+        addObject(disapro,298,325);
+        disapro.setLocation(292,308);
     }
-    @Override
-    public void paintComponent(Graphics g)
-    {
-        super.paintComponent(g);
-        for(Pelota p : peltas)
-        {
-            p.NuevaPelota();
-        }
-    }*/
 }

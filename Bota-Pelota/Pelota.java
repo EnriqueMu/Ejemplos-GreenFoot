@@ -49,6 +49,7 @@ public class Pelota extends Actor
         }
         //cambiamos de posicion a la pelota
         this.setLocation(nuevox,nuevoy);
+        
     }
     
     
