@@ -20,6 +20,8 @@ public class Disapro extends Actor
       else if(this.isTouching(Pelota.class))
       {
           this.removeTouching(Pelota.class);
+          World dis = this.getWorld();
+          dis.removeObject(this);
         }
     }    
 }
